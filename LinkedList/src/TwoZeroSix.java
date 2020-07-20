@@ -20,12 +20,26 @@ public class TwoZeroSix {
     }
 
     private static class Node {
-
         int value;
-        Node next;
+        Node next = null;
 
         public Node(int value) {
             this.value = value;
+        }
+    }
+
+    public static void main(String[] args) {
+        Node list1 = new Node(1);
+        Node list2 = new Node(2);
+        Node list3 = new Node(3);
+        list1.next = list2;
+        list2.next = list3;
+
+        TwoZeroSix revers = new TwoZeroSix();
+        Node node = revers.reverseList(list1);
+        while (node != null) {
+            System.out.println(node.value);
+            node = node.next;
         }
     }
 }
