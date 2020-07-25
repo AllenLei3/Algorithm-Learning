@@ -1,3 +1,5 @@
+package leetcode;
+
 /**
  * LeetCode 206 反转链表
  *

@@ -1,4 +1,8 @@
+package structure;
+
 /**
+ * 顺序栈（数组实现）
+ *
  * @author xulei
  * @date 2020/7/24 2:08 上午
  */

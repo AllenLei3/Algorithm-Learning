@@ -1,14 +1,16 @@
 /**
+ * 选择排序
+ *
  * @author xulei
  * @date 2020/7/24 7:12 下午
  */
-public class xuanzeSort {
+public class SelectSort {
 
     public static int[] sort(int[] array) {
         if (array == null || array.length <= 1) {
             return array;
         }
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             // 先让最小值等于未排序区间中的第一个元素
             int min = i;
             // 循环获取未排序区间中的最小值

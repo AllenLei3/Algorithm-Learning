@@ -1,8 +1,10 @@
 /**
+ * 插入排序
+ *
  * @author xulei
  * @date 2020/7/24 6:15 下午
  */
-public class charuSort {
+public class InsertSort {
 
     public static int[] sort(int[] array) {
         if (array == null || array.length <= 1) {
