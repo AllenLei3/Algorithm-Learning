@@ -4,30 +4,31 @@
  * @author xulei
  * @date 2020/7/25 3:56 下午
  */
-public class guibingSort {
+public class MergeSort {
 
     public static int[] sort(int[] array) {
-        return mergeSort(array, 0, array.length - 1);
+        mergeSortInternally(array, 0, array.length - 1);
+        return array;
     }
 
     /**
      * 分解
      */
-    private static int[] mergeSort(int[] array, int start, int end) {
+    private static void mergeSortInternally(int[] array, int start, int end) {
         if (start >= end) {
-            return array;
+            return;
         }
         // 取中间位置,防止（start + end）的和超过int类型最大值
         int middle = start + (end - start) / 2;
-        mergeSort(array, start, middle);
-        mergeSort(array, middle + 1, end);
-        return merge(array, start, middle, end);
+        mergeSortInternally(array, start, middle);
+        mergeSortInternally(array, middle + 1, end);
+        merge(array, start, middle, end);
     }
 
     /**
      * 合并
      */
-    private static int[] merge(int[] array, int start, int middle, int end) {
+    private static void merge(int[] array, int start, int middle, int end) {
         int i = start;
         int j = middle + 1;
         int k = 0;
@@ -54,11 +55,10 @@ public class guibingSort {
         for (i = 0; i <= end - start; i++) {
             array[start + i] = temp[i];
         }
-        return array;
     }
 
     public static void main(String[] args) {
-        int[] array = sort(new int[]{3,6,8,4,2,1});
+        int[] array = sort(new int[]{3,6,5,8,4,7,2,1});
         for (int i : array) {
             System.out.println(i);
         }
