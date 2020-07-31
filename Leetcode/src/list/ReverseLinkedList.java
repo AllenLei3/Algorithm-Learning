@@ -1,12 +1,12 @@
-package leetcode;
+package list;
 
 /**
- * LeetCode 206 反转链表
+ * LC 206 反转链表
  *
  * @author xulei
  * @date 2020/7/21 12:22 上午
  */
-public class TwoZeroSix {
+public class ReverseLinkedList {
 
     public Node reverseList(Node head) {
         Node pre = null;
@@ -37,7 +37,7 @@ public class TwoZeroSix {
         list1.next = list2;
         list2.next = list3;
 
-        TwoZeroSix revers = new TwoZeroSix();
+        ReverseLinkedList revers = new ReverseLinkedList();
         Node node = revers.reverseList(list1);
         while (node != null) {
             System.out.println(node.value);

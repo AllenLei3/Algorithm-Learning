@@ -1,4 +1,4 @@
-package structure;
+package stack;
 
 /**
  * 顺序栈（数组实现）

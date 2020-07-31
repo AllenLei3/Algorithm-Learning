@@ -1,4 +1,4 @@
-package structure;
+package list;
 
 /**
  * 单链表的实现

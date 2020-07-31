@@ -1,4 +1,4 @@
-package structure;
+package queue;
 
 /**
  * 用数组实现的顺序队列（非循环队列实现）

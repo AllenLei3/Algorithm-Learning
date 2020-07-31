@@ -1,4 +1,4 @@
-package structure;
+package queue;
 
 /**
  * 用数组实现的循环队列

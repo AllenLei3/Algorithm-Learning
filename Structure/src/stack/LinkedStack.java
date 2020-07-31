@@ -1,4 +1,4 @@
-package structure;
+package stack;
 
 /**
  * 链式栈（链表实现）

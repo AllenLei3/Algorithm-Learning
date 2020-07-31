@@ -1,4 +1,4 @@
-package structure;
+package queue;
 
 /**
  * 用链表实现的链式队列（非循环队列实现）
