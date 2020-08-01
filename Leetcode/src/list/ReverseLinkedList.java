@@ -1,7 +1,7 @@
 package list;
 
 /**
- * LC 206 反转链表
+ * 206 反转链表
  *
  * @author xulei
  * @date 2020/7/21 12:22 上午
