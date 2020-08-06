@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.PriorityQueue;
+
 /**
  * 堆。基于数组实现
  *
@@ -23,17 +25,20 @@ public class Heap {
 
     /**
      * 插入元素，从下往上的堆化方法
+     * 因为堆从array[1]开始，所以可以直接用count表示堆尾下标
      */
     public void insertNode(int data) {
-        if (count == capacity) {
+        if (count >= capacity) {
             return;
         }
-        // 将新元素放到数组尾部
-        array[count++] = data;
+        // 堆元素数量加一，用来存放新元素
+        count++;
+        array[count] = data;
         int index = count;
 
-        // 比较该节点与父节点的大小，进行交换
+        // 比较该节点与父节点的大小，这里大于0是因为array[0]不存储堆元素，(除以2可通过右移1位来实现)
         while (index / 2 > 0 && array[index] > array[index / 2]) {
+            // 进行交换
             int temp = array[index];
             array[index] = array[index / 2];
             array[index / 2] = temp;
@@ -48,11 +53,11 @@ public class Heap {
         if (count == 0) {
             return;
         }
-        // 交换堆顶和堆尾元素
+        // 交换堆顶和堆尾元素，count减1，相当于删除数组最后一个元素，这样不会出现数组空洞
         array[1] = array[count];
         count--;
 
-        // 从上往下比较父节点与子节点的大小，进行交换
+        // 从堆顶节点开始往下比较与子节点的大小，堆顶下标从1开始
         int i = 1;
         while (true) {
             int maxIndex = i;
@@ -60,7 +65,7 @@ public class Heap {
             if (i * 2 <= count && array[i] < array[i * 2]) {
                 maxIndex = i * 2;
             }
-            // 再比较右子节点，判断左右子节点哪个大
+            // 再比较右子节点，判断左右子节点哪个大，然后更新maxIndex
             if (i * 2 + 1 <= count && array[maxIndex] < array[i * 2 + 1]) {
                 maxIndex = i * 2 + 1;
             }
@@ -68,9 +73,11 @@ public class Heap {
             if (maxIndex == i) {
                 break;
             }
+            // 将父节点与左右子节点中最大的节点进行交换
             int temp = array[i];
             array[i] = array[maxIndex];
             array[maxIndex] = temp;
+            // 更新父节点
             i = maxIndex;
         }
     }
