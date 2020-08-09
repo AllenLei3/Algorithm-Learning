@@ -83,6 +83,47 @@ public class Graph {
         System.out.println(t + " ");
     }
 
+    /** 深度优先搜索时，是否已找到终止顶点 */
+    private static boolean found = false;
+
+    /**
+     * 深度优先搜索算法，该算法得到的路径并不是最短路径
+     *
+     * @param s 起始顶点
+     * @param t 终止顶点
+     */
+    public void dfs(int s, int t) {
+        found = false;
+        // 用来记录已经被访问的顶点，避免顶点被重复访问
+        boolean[] visited = new boolean[listArray.length];
+        // 用来记录搜索路径，初始值都设为-1，表示没有元素。此处数组下标表示顶点，数组元素表示该下标顶点对应的前驱顶点
+        int[] prev = new int[listArray.length];
+        Arrays.fill(prev, -1);
+        // 递归搜索路径
+        recurDfs(s, t, visited, prev);
+        print(prev, s, t);
+    }
+
+    private void recurDfs(int node, int end, boolean[] visited, int[] prev) {
+        if (found) {
+            return;
+        }
+        visited[node] = true;
+        if (node == end) {
+            found = true;
+            return;
+        }
+        // 遍历该顶点连接的其他顶点
+        for (int i = 0; i < listArray[node].size(); ++i) {
+            int q = listArray[node].get(i);
+            // 如果之前已经访问过了，就跳过本次for循环，如果整个for循环结束后都没有发现新的顶点，则回到递归的上一层（回溯）
+            if (!visited[q]) {
+                prev[q] = node;
+                recurDfs(q, end, visited, prev);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Graph graph = new Graph(8);
         graph.addEdge(0,1);
@@ -97,5 +138,8 @@ public class Graph {
 
         // 广度优先
         graph.bfs(0,6);
+        System.out.println("----------");
+        // 深度优先
+        graph.dfs(0, 6);
     }
 }
