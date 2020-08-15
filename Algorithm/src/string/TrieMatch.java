@@ -59,4 +59,15 @@ public class TrieMatch {
             this.data = data;
         }
     }
+
+    public static void main(String[] args) {
+        TrieMatch trie = new TrieMatch();
+        trie.insert(new char[]{'h', 'e', 'l', 'l', 'o'});
+        trie.insert(new char[]{'h', 'e'});
+        trie.insert(new char[]{'a', 'l', 'l', 'e', 'n'});
+        trie.insert(new char[]{'i', 'v', 'e', 'r', 's', 'o', 'n'});
+
+        System.out.println(trie.findMatchText(new char[]{'a', 'l', 'l', 'e', 'n'}));
+        System.out.println(trie.findMatchText(new char[]{'a', 'l', 'e', 'n'}));
+    }
 }

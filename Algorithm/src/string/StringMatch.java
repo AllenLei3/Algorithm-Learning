@@ -85,4 +85,11 @@ public class StringMatch {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+        String main = "abcdefghigklmn";
+        String pattern = "def";
+        System.out.println(bf(main, pattern));
+        System.out.println(rk(main, pattern));
+    }
 }

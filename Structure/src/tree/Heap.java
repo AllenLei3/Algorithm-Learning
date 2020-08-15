@@ -1,7 +1,5 @@
 package tree;
 
-import java.util.PriorityQueue;
-
 /**
  * 堆。基于数组实现
  *
@@ -80,5 +78,21 @@ public class Heap {
             // 更新父节点
             i = maxIndex;
         }
+    }
+
+    public static void main(String[] args) {
+        Heap heap = new Heap(10);
+        heap.insertNode(34);
+        heap.insertNode(26);
+        heap.insertNode(13);
+        heap.insertNode(47);
+        heap.insertNode(85);
+        heap.insertNode(96);
+        heap.insertNode(57);
+
+        // 查看堆顶元素
+        System.out.println(heap.array[1]);
+        heap.removeTopNode();
+        System.out.println(heap.array[1]);
     }
 }

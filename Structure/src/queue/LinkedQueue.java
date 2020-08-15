@@ -48,4 +48,17 @@ public class LinkedQueue {
             this.value = value;
         }
     }
+
+    public static void main(String[] args) {
+        LinkedQueue queue = new LinkedQueue();
+        queue.enqueue("a");
+        queue.enqueue("b");
+        queue.enqueue("c");
+        queue.enqueue("d");
+        queue.enqueue("e");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(queue.dequeue());
+        }
+    }
 }

@@ -21,6 +21,9 @@ public class CycleQueue {
         n = capacity;
     }
 
+    /**
+     * 循环队列会浪费一个数组元素空间
+     */
     public boolean enqueue(String s) {
         // 队满
         if ((tail + 1) % n == head) {
@@ -38,5 +41,21 @@ public class CycleQueue {
         String ret = item[head];
         head = (head + 1) % n;
         return ret;
+    }
+
+    public static void main(String[] args) {
+        CycleQueue queue = new CycleQueue(5);
+        queue.enqueue("a");
+        queue.enqueue("b");
+        queue.enqueue("c");
+        queue.enqueue("d");
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue("e");
+        queue.enqueue("f");
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(queue.dequeue());
+        }
     }
 }

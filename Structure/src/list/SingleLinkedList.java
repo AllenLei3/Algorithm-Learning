@@ -75,4 +75,20 @@ public class SingleLinkedList {
         }
     }
 
+    public static void main(String[] args) {
+        SingleLinkedList list = new SingleLinkedList();
+        list.insertHead(1);
+        list.insertAfter(list.head, 2);
+        list.insertAfter(list.head, 3);
+        list.insertAfter(list.head, 4);
+        list.insertAfter(list.head, 5);
+        list.insertTail(6);
+
+        Node n = list.head;
+        while (n != null) {
+            System.out.println(n.value);
+            n = n.next;
+        }
+    }
+
 }

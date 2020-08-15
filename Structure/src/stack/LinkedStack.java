@@ -13,7 +13,7 @@ public class LinkedStack {
     /**
      * 入栈（头插）
      */
-    public void push(int value) {
+    public void push(String value) {
         Node node = new Node(value);
         if (head == null) {
             head = node;
@@ -23,21 +23,34 @@ public class LinkedStack {
         }
     }
 
-    public int pop() {
+    public String pop() {
         if (head == null) {
-            return -1; // -1 表示无数据
+            return ""; // 无数据
         }
-        int value = head.value;
+        String value = head.value;
         head = head.next;
         return value;
     }
 
     public static class Node{
-        private final int value;
+        private final String value;
         private Node next;
 
-        public Node(int value) {
+        public Node(String value) {
             this.value = value;
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedStack stack = new LinkedStack();
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+        stack.push("d");
+        stack.push("e");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(stack.pop());
         }
     }
 }

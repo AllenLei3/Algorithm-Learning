@@ -11,11 +11,11 @@ public class BinarySearchTree {
     /**
      * 二叉查找树的查找操作
      */
-    public TreeNode findNode(TreeNode root, int data) {
+    public BinaryTree.TreeNode findNode(BinaryTree.TreeNode root, int data) {
         while (root != null) {
-            if (root.data > data) {
+            if (root.value > data) {
                 root = root.left;
-            } else if (root.data < data) {
+            } else if (root.value < data) {
                 root = root.right;
             } else {
                 return root;
@@ -27,17 +27,17 @@ public class BinarySearchTree {
     /**
      * 二叉查找树的插入操作
      */
-    public void insertNode(TreeNode root, int data) {
+    public void insertNode(BinaryTree.TreeNode root, int data) {
         while (root != null) {
-            if (root.data < data) {
+            if (root.value < data) {
                 if (root.right == null) {
-                    root.right = new TreeNode(data);
+                    root.right = new BinaryTree.TreeNode(data);
                     return;
                 }
                 root = root.right;
             } else {
                 if (root.left == null) {
-                    root.left = new TreeNode(data);
+                    root.left = new BinaryTree.TreeNode(data);
                     return;
                 }
                 root = root.left;
@@ -51,12 +51,12 @@ public class BinarySearchTree {
      * @param root 指向要删除的节点，初始化为根节点
      * @param data data
      */
-    public TreeNode deleteNode(TreeNode root, int data) {
+    public BinaryTree.TreeNode deleteNode(BinaryTree.TreeNode root, int data) {
         // 先获取要删除节点的父节点
-        TreeNode parent = null;
-        while (root != null && root.data != data) {
+        BinaryTree.TreeNode parent = null;
+        while (root != null && root.value != data) {
             parent = root;
-            if (root.data > data) {
+            if (root.value > data) {
                 root = root.left;
             } else {
                 root = root.right;
@@ -69,21 +69,21 @@ public class BinarySearchTree {
         // 如果要删除的节点有两个子节点
         if (root.left != null && root.right != null) {
             // 获取要删除节点的右子树中的最小值
-            TreeNode min = root.right;
-            TreeNode minParent = root;
+            BinaryTree.TreeNode min = root.right;
+            BinaryTree.TreeNode minParent = root;
             while (min.left != null) {
                 minParent = min;
                 min = min.left;
             }
             // 交换元素值
-            root.data = min.data;
+            root.value = min.value;
             // 这里改变引用是为了通过下面的代码来删除min节点
             root = min;
             parent = minParent;
         }
 
         // 要删除的节点是叶子节点或只有一个子节点
-        TreeNode child = null;
+        BinaryTree.TreeNode child = null;
         if (root.left != null) {
             child = root.left;
         } else if (root.right != null) {
@@ -103,13 +103,26 @@ public class BinarySearchTree {
         return parent;
     }
 
-    public static class TreeNode {
-        private int data;
-        private TreeNode left;
-        private TreeNode right;
+    public static void main(String[] args) {
+        BinaryTree.TreeNode root = new BinaryTree.TreeNode(1);
 
-        public TreeNode(int data) {
-            this.data = data;
-        }
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insertNode(root, 55);
+        tree.insertNode(root, 67);
+        tree.insertNode(root, 84);
+        tree.insertNode(root, 15);
+        tree.insertNode(root, 39);
+        tree.insertNode(root, 42);
+        tree.insertNode(root, 37);
+
+        // 中序遍历即为顺序输出
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.inOrder(root);
+
+        System.out.println("-----------");
+        binaryTree.inOrder(tree.findNode(root, 15));
+
+        System.out.println("-----------");
+        binaryTree.inOrder(tree.deleteNode(root, 37));
     }
 }

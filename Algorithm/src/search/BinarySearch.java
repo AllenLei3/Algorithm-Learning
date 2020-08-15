@@ -123,7 +123,7 @@ public class BinarySearch {
     }
 
     /**
-     * 查找最后个小于等于给定值的元素，array有序且包含重复元素
+     * 查找最后一个小于等于给定值的元素，array有序且包含重复元素
      */
     public static int search6(int[] array, int value) {
         int min = 0;
@@ -142,5 +142,19 @@ public class BinarySearch {
             }
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(BinarySearch.search(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 5));
+
+        System.out.println(BinarySearch.search2(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, 5));
+
+        System.out.println(BinarySearch.search3(new int[]{1, 2, 2, 4, 5, 5, 7, 8, 8}, 5));
+
+        System.out.println(BinarySearch.search4(new int[]{1, 2, 2, 4, 5, 5, 7, 8, 8}, 5));
+
+        System.out.println(BinarySearch.search5(new int[]{1, 2, 2, 4, 6, 6, 7, 8, 8}, 5));
+
+        System.out.println(BinarySearch.search6(new int[]{1, 2, 2, 4, 6, 6, 7, 8, 8}, 5));
     }
 }
