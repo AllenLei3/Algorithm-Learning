@@ -67,18 +67,19 @@ public class AcAutoMata {
         }
     }
 
-    private Boolean match(String text) {
+    private Boolean match(String main) {
         AcNode root = this.root;
         AcNode p = root;
 
-        int n = text.length();
-        for (int i = 0; i < n; i++) {
-            String c = text.charAt(i) + "";
+        // 循环主串字符
+        for (int i = 0; i < main.length(); i++) {
+            String c = main.charAt(i) + "";
             while (p.child.get(c) == null && p != root){
                 p = p.fail;
             }
             p = p.child.get(c);
-            if (p ==null) {
+            // 如果没有匹配的，从root开始重新匹配
+            if (p == null) {
                 p = root;
             }
             AcNode tmp = p;
