@@ -51,8 +51,8 @@ public class ZeroOnePackageV3 {
     }
 
     public static void main(String[] args) {
-        int[] weight = new int[]{3, 9, 12, 6, 2, 29, 10, 7, 5, 4};
-        int[] value = new int[]{3, 9, 12, 6, 2, 29, 10, 7, 5, 4};
+        int[] weight = new int[]{20, 20, 20, 20, 21};
+        int[] value = new int[]{20, 20, 20, 20, 21};
         ZeroOnePackageV3 p = new ZeroOnePackageV3(100, weight, value);
         p.put(0, 0, 0);
         System.out.println(p.maxSelectValue);

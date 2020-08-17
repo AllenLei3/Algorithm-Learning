@@ -60,7 +60,7 @@ public class ZeroOnePackageV2 {
     }
 
     public static void main(String[] args) {
-        ZeroOnePackageV2 p = new ZeroOnePackageV2(100, new int[]{3, 9, 12, 6, 2, 29, 10, 7, 5, 4});
+        ZeroOnePackageV2 p = new ZeroOnePackageV2(100, new int[]{20, 20, 20, 20, 21});
         p.putItem2Package();
         System.out.println(p.maxSelectCapacity);
     }
