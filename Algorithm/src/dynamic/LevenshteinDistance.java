@@ -1,7 +1,7 @@
 package dynamic;
 
 /**
- * 莱文斯坦距离（动态规划实现）
+ * 莱文斯坦距离（动态规划实现），编辑距离的一种实现方式，可以新增、修改、删除字符
  *
  * @author xulei
  * @date 2020/8/23 10:10 下午
@@ -48,6 +48,9 @@ public class LevenshteinDistance {
         // 根据状态转移方程循环填充
         for (int i = 1; i < a.length; i++) {
             for (int j = 1; j < b.length; j++) {
+                // 当(i-1, j)和(i, j-1)要移动到(i, j)时，由于下标不是对等的，所以要加1，这样比较的时候两个下标才对等
+                // 而(i-1, j-1)转移到(i, j)这个状态时，minDist保持不变，因为a[i]==b[j]，若不相等，则加1
+                // 其实就是求最优子结构，看上一步走到了什么程度，假设子问题已经解决，根据子问题如何求解当前问题
                 if (a[i] == b[j]) {
                     minDist[i][j] = min(minDist[i-1][j] + 1, minDist[i][j-1] + 1, minDist[i-1][j-1]);
                 } else {
