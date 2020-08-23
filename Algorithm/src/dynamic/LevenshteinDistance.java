@@ -49,9 +49,9 @@ public class LevenshteinDistance {
         for (int i = 1; i < a.length; i++) {
             for (int j = 1; j < b.length; j++) {
                 if (a[i] == b[j]) {
-                    minDist[i][j] = min(minDist[i - 1][j] + 1, minDist[i][j - 1] + 1, minDist[i - 1][j - 1]);
+                    minDist[i][j] = min(minDist[i-1][j] + 1, minDist[i][j-1] + 1, minDist[i-1][j-1]);
                 } else {
-                    minDist[i][j] = min(minDist[i - 1][j] + 1, minDist[i][j - 1] + 1, minDist[i - 1][j - 1] + 1);
+                    minDist[i][j] = min(minDist[i-1][j] + 1, minDist[i][j-1] + 1, minDist[i-1][j-1] + 1);
                 }
             }
         }
